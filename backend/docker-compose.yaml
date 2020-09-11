@@ -1,0 +1,30 @@
+# docker-compose.yml
+version: "3"
+services:
+  backend:
+    container_name: backend
+    build: .
+    depends_on:
+      - database
+    environment:
+      PG_HOST: database
+    volumes:
+      - .:/app/
+      - /app/node_modules
+    working_dir: /app
+    command: npm run start
+    ports:
+      - "3000:3000"
+
+  database:
+    container_name: database
+    image: timescale/timescaledb-postgis:latest-pg12
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: thminsight
+      POSTGRES_PASSWORD: coding_test_password
+      POSTGRES_DB: thm_database
+    volumes:
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      - ./sql/insert.sql:/docker-entrypoint-initdb.d/2-insert.sql
