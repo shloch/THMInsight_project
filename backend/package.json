@@ -1,0 +1,41 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "THM-Insight",
+  "repository": {
+    "url": "https://github.com/cementysdev/THM-Insight"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down",
+    "docker:test": "docker-compose run backend sh -c cd /app &&  npm run test",
+    "docker:test:watch": "docker-compose run backend sh -c cd /app &&  npm run test:watch",
+    "docker:test:coverage": "docker-compose run backend sh -c cd /app &&  npm run test:coverage",
+    "docker:lint": "docker-compose run backend sh -c cd /app &&  npm run lint",
+    "lint": "eslint --ignore-pattern '**/node_modules/*' ./ --fix",
+    "test": "jest --forceExit --detectOpenHandles",
+    "test:coverage": "jest --forceExit --coverage --detectOpenHandles",
+    "test:watch": "jest --watchAll --detectOpenHandles"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "pg": "^7.18.2"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1",
+    "jest-extended": "^0.11.5",
+    "@types/jest": "^25.2.3",
+    "nodemon": "^2.0.4",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.13.2"
+  }
+}
