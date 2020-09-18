@@ -1,0 +1,42 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:mocha/recommended",
+    "plugin:chai-friendly/recommended",
+    "plugin:chai-expect/recommended"
+  ],
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "rules": {
+    "consistent-return": [
+      1
+    ],
+    "strict": [
+      0
+    ],
+    "max-len": [
+      "warn",
+      200
+    ],
+    "no-underscore-dangle": [
+      1
+    ],
+    "no-console": "off",
+    "no-unused-expressions": 0,
+    "chai-friendly/no-unused-expressions": 2,
+    "mocha/no-mocha-arrows": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "999.999.999"
+    }
+  }
+}
