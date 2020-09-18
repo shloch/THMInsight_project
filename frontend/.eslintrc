@@ -1,0 +1,14 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "consistent-return": [1],
+    "strict": [0],
+    "max-len": ["warn", 200],
+    "no-underscore-dangle": [1],
+    "no-console": "off",
+    "react/jsx-props-no-spreading": "off"
+  },
+  "env": {
+    "browser": true
+  }
+}
