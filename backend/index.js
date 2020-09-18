@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const morganMiddleware = require('./middelware/logger');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
-
-const port = process.env.NODE_ENV || 3000;
+const port = 3002;
 
 const app = express();
 
@@ -21,10 +21,10 @@ app.use(
     extended: true,
   }),
 );
-
+app.use(morganMiddleware);
 app.get('/health', (req, res) => res.send({ message: 'ok' }));
 
 const server = app.listen(port, () => {
-    console.log(`THM App running on port ${port}.`);
+  console.log(`THM App running on port ${port}.`);
 });
 module.exports = server;
