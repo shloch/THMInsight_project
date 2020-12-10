@@ -10,7 +10,6 @@ services:
       PG_HOST: database
     volumes:
       - .:/app/
-      - /app/node_modules
     working_dir: /app
     command: npm run start
     ports:
