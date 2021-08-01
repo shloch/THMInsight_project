@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const morganMiddleware = require('./middelware/logger');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
+const User = require('./services/user');
 
 const port = 3002;
 
@@ -22,6 +23,17 @@ app.use(
   }),
 );
 app.use(morganMiddleware);
+
+app.post('/addUserData', (request, response) => {
+  console.log(request.body);
+  const {
+    firstName, lastName, email, country, city, phone, password
+  } = request.body;
+  User.addNewUser(firstName, lastName, email, country, city, phone, password);
+  console.log('user added');
+  response.send({ message: 'ok' });
+});
+
 app.get('/health', (req, res) => res.send({ message: 'ok' }));
 
 const server = app.listen(port, () => {
