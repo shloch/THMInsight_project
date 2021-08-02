@@ -10,3 +10,12 @@
 - Use db function in `backend/sql/db.js` to communicate with db
 - Create services in service folder
 - Create unit test in test folder
+
+
+## Live demo
+
+### Desktop
+![alt text](https://github.com/shloch/myNodejs101/blob/main/public/Untitled.gif)
+
+### Mobile
+![alt text](https://github.com/shloch/myNodejs101/blob/main/public/Untitled.gif)

@@ -37,8 +37,8 @@ app.post('/editUserData/:userID', (request, response) => {
   const {
     firstName, lastName, email, country, city, phone, password,
   } = request.body;
-  const uu = User.editUserData(firstName, lastName, email, country, city, phone, password, userID);
-  console.log(`uu = ${uu}`);
+  User.editUserData(firstName, lastName, email, country, city, phone, password, userID);
+
 });
 
 app.post('/authenticate', (request, response) => {
