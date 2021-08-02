@@ -76,21 +76,8 @@ const addNewUser = (firstName, lastName, email, country, city, phone, password) 
   });
 };
 
-/*
-UPDATE table_name
-SET column1 = value1,
-    column2 = value2,
-    ...
-WHERE condition
-RETURNING * | output_expression AS output_name;
-
-
-(email, password, first_name, last_name, country, city, phone_number, position)
-*/
-
 const editUserData = (firstName, lastName, email, country, city, phone, password, id) => {
   const hash = hashPassword(email, password);
-  const DEFAULT_POSITION = 'Ile de France';
   const queryString = `UPDATE users
   SET email = '${email}',
       password = '${hash}',
@@ -98,10 +85,8 @@ const editUserData = (firstName, lastName, email, country, city, phone, password
       last_name = '${lastName}',
       country = '${country}',
       city = '${city}',
-      phone = '${phone}',
-      password = '${DEFAULT_POSITION}'
-  WHERE id = +'${city}'
-  RETURNING * | output_expression AS output_name;`;
+      phone_number = '${phone}'
+  WHERE id = ${id}`;
 
   db.query(queryString, (err, res) => {
     if (err !== undefined) {
@@ -132,7 +117,7 @@ const editUserData = (firstName, lastName, email, country, city, phone, password
         console.log('# of records inserted:', res.rowCount);
         return 'SUCCESS';
       }
-      console.log('No records were inserted.');
+      console.log('No records were updated.');
       return 'FAIL';
     }
   });

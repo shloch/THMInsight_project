@@ -32,13 +32,13 @@ app.post('/addUserData', (request, response) => {
   User.addNewUser(firstName, lastName, email, country, city, phone, password);
 });
 
-app.post('/editUserData', (request, response) => {
-  console.log(request.body);
-  console.log('yoo edit');
+app.post('/editUserData/:userID', (request, response) => {
+  const { userID } = request.params;
+  console.log(`userID = ${userID}`);
   const {
     firstName, lastName, email, country, city, phone, password,
   } = request.body;
-  User.editUserData(firstName, lastName, email, country, city, phone, password);
+  User.editUserData(firstName, lastName, email, country, city, phone, password, userID);
 });
 
 app.post('/authenticate', (request, response) => {
