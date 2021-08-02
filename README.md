@@ -11,11 +11,36 @@
 - Create services in service folder
 - Create unit test in test folder
 
+## VIDEO EXPLANATION ON YOUTUBE
+
+- https://www.youtube.com/watch?v=BpBIag5bdUk
 
 ## Live demo
 
 ### Desktop
-![alt text](https://github.com/shloch/THMInsight_project/blob/dev/screenshots/THMI.gif)
+![alt text](https://github.com/shloch/THMInsight_project/blob/dev/screenshots/THMI2.gif)
 
 ### Mobile
 ![alt text](https://github.com/shloch/THMInsight_project/blob/dev/screenshots/THMI_mobile.gif)
+
+## Tools used
+
+- NodeJs
+- PostGres
+- Javascript/React
+- Bash terminal (for typing commands)
+
+## Contributor
+
+### 👤 **SHEY Louis CHIA**
+
+- Github: [shloch](https://github.com/shloch)
+- Twitter: [@shloch](https://twitter.com/shloch)
+- Linkedin: [/in/shey-louis-chia](https://www.linkedin.com/in/shey-louis-chia)
+- Email: shloch2007@yahoo.fr
+
+
+## Acknowledgements
+- https://overreacted.io/a-complete-guide-to-useeffect/
+- https://formik.org/docs/tutorial
+- pgAdmin4
