@@ -15,7 +15,7 @@
 ## Live demo
 
 ### Desktop
-![alt text](https://github.com/shloch/myNodejs101/blob/main/public/Untitled.gif)
+![alt text](https://github.com/shloch/THMInsight_project/blob/dev/screenshots/THMI.gif)
 
 ### Mobile
-![alt text](https://github.com/shloch/myNodejs101/blob/main/public/Untitled.gif)
+![alt text](https://github.com/shloch/THMInsight_project/blob/dev/screenshots/THMI_mobile.gif)
