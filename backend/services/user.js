@@ -24,7 +24,6 @@ const authenticateUser = async (email, password) => {
     const { rows } = await db.query(queryText);
     if (rows[0]) {
       const user = rows[0];
-      console.log(user);
       return user;
     }
     throw (new Error('Bad credentials'));
@@ -43,29 +42,13 @@ const addNewUser = (firstName, lastName, email, country, city, phone, password) 
 
   db.query(queryString, (err, res) => {
     if (err !== undefined) {
-      // log the error to console
       console.log('Postgres INSERT error:', err);
 
-      // get the keys for the error
-      const keys = Object.keys(err);
-      console.log('\nkeys for Postgres error:', keys);
-
-      // get the error position of SQL string
       console.log('Postgres error position:', err.position);
     }
 
-    // check if the response is not 'undefined'
     if (res !== undefined) {
-      // log the response to console
       console.log('Postgres response:', res);
-
-      // get the keys for the response object
-      const keys = Object.keys(res);
-
-      // log the response keys to console
-      console.log('\nkeys type:', typeof keys);
-      console.log('keys for Postgres response:', keys);
-
       if (res.rowCount > 0) {
         console.log('# of records inserted:', res.rowCount);
         return 'SUCCESS';
@@ -90,28 +73,16 @@ const editUserData = (firstName, lastName, email, country, city, phone, password
 
   db.query(queryString, (err, res) => {
     if (err !== undefined) {
-      // log the error to console
       console.log('Postgres INSERT error:', err);
 
-      // get the keys for the error
       const keys = Object.keys(err);
       console.log('\nkeys for Postgres error:', keys);
 
-      // get the error position of SQL string
       console.log('Postgres error position:', err.position);
     }
 
-    // check if the response is not 'undefined'
     if (res !== undefined) {
-      // log the response to console
       console.log('Postgres response:', res);
-
-      // get the keys for the response object
-      const keys = Object.keys(res);
-
-      // log the response keys to console
-      console.log('\nkeys type:', typeof keys);
-      console.log('keys for Postgres response:', keys);
 
       if (res.rowCount > 0) {
         console.log('# of records inserted:', res.rowCount);

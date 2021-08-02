@@ -44,7 +44,7 @@ export default function EditUser() {
       const postURL = `${backendServer}/editUserData/${userID}`;
       const afterPostData = editUserData(formValues, postURL);
       console.log(afterPostData);
-      setNotification('Successfully created User');
+      setNotification('Successfully created Updated');
     },
   });
 

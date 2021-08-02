@@ -34,11 +34,11 @@ app.post('/addUserData', (request, response) => {
 
 app.post('/editUserData/:userID', (request, response) => {
   const { userID } = request.params;
-  console.log(`userID = ${userID}`);
   const {
     firstName, lastName, email, country, city, phone, password,
   } = request.body;
-  User.editUserData(firstName, lastName, email, country, city, phone, password, userID);
+  const uu = User.editUserData(firstName, lastName, email, country, city, phone, password, userID);
+  console.log(`uu = ${uu}`);
 });
 
 app.post('/authenticate', (request, response) => {
@@ -48,7 +48,6 @@ app.post('/authenticate', (request, response) => {
   } = request.body;
   const res = User.authenticateUser(email, password);
   res.then((data) => {
-    console.log('======');
     response.send(data);
   });
 });

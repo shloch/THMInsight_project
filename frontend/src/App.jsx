@@ -8,6 +8,7 @@ import ProfilePage from './pages/profile';
 import CreateUser from './componenets/CreateUser';
 import Login from './componenets/Login';
 import EditUser from './componenets/editUser';
+import Home from './componenets/Home';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <CreateUser />
+            <Home />
           </Route>
           <Route exact path="/login">
             <Login />
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/editUser">
             <EditUser />
+          </Route>
+          <Route path="/home">
+            <Home />
           </Route>
         </Switch>
       </Router>
