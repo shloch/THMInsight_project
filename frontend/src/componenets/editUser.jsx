@@ -4,16 +4,18 @@ import * as Yup from 'yup';
 import postDataToServer from '../helpers/sendDataToServer';
 import backendServer from '../helpers/configBackend';
 
-export default function CreateUser() {
+export default function EditUser() {
   const [notification, setNotification] = useState('');
+  const params = new URLSearchParams(window.location.search);
+  console.log(params.get('firstname'));
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      country: '',
-      city: '',
-      phone: '',
+      firstName: params.has('firstname') ? params.get('firstname') : '',
+      lastName: params.has('lastname') ? params.get('lastname') : '',
+      email: params.has('email') ? params.get('email') : '',
+      city: params.has('city') ? params.get('city') : '',
+      phone: params.has('phone') ? params.get('phone') : '',
+      country: params.has('country') ? params.get('country') : '',
       password: '',
     },
     validationSchema: Yup.object({
@@ -48,7 +50,7 @@ export default function CreateUser() {
 
   return (
     <>
-      <div id="yourProfile"> Your Profile</div>
+      <div id="yourProfile"> Edit User</div>
       <div id="profileBlock">
         <div id="profilePhoto">
           <img src="assets/images/profile.jpeg" alt="profilePic" />

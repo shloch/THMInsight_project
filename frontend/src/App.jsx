@@ -1,32 +1,35 @@
 import React from 'react';
 import './App.css';
 import {
-  BrowserRouter as Router, Link, Switch, Route,
+  BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
 
 import ProfilePage from './pages/profile';
 import CreateUser from './componenets/CreateUser';
+import Login from './componenets/Login';
+import EditUser from './componenets/editUser';
 
 function App() {
   return (
-    <div className="root">
+    <div className="mainSection">
       {/* <ProfilePage /> */}
 
       <Router>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/products">Products</Link>
-          <Link to="/createUser">createUser</Link>
-        </nav>
         <Switch>
           <Route exact path="/">
-            {/* <Home /> */}
+            <CreateUser />
+          </Route>
+          <Route exact path="/login">
+            <Login />
           </Route>
           <Route path="/ProfilePage">
             <ProfilePage />
           </Route>
           <Route path="/createUser">
             <CreateUser />
+          </Route>
+          <Route path="/editUser">
+            <EditUser />
           </Route>
         </Switch>
       </Router>

@@ -27,11 +27,21 @@ app.use(morganMiddleware);
 app.post('/addUserData', (request, response) => {
   console.log(request.body);
   const {
-    firstName, lastName, email, country, city, phone, password
+    firstName, lastName, email, country, city, phone, password,
   } = request.body;
   User.addNewUser(firstName, lastName, email, country, city, phone, password);
-  console.log('user added');
-  response.send({ message: 'ok' });
+});
+
+app.post('/authenticate', (request, response) => {
+  console.log(request.body);
+  const {
+    email, password,
+  } = request.body;
+  const res = User.authenticateUser(email, password);
+  res.then((data) => {
+    console.log('======');
+    response.send(data);
+  });
 });
 
 app.get('/health', (req, res) => res.send({ message: 'ok' }));

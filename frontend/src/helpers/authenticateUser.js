@@ -1,5 +1,5 @@
-function postDataToServer(mydata, serverURL) {
-  fetch(serverURL, {
+function authenticate(mydata, serverURL) {
+  return fetch(serverURL, {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
@@ -10,10 +10,11 @@ function postDataToServer(mydata, serverURL) {
     .then((response) => response.json())
     .then((data) => {
       console.log('Success:', data);
+      return data;
     })
     .catch((error) => {
       console.error('Error:', error);
     });
 }
 
-export default postDataToServer;
+export default authenticate;

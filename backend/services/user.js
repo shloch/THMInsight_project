@@ -12,8 +12,10 @@ const hashPassword = (email, password) => shajs('sha256').update(`${email}${pass
 
 const authenticateUser = async (email, password) => {
   const hash = hashPassword(email, password);
+  console.log(hash);
   const queryText = {
-    text: ` SELECT s.id, s.email, s.first_name as firstName, s.last_name as lastName
+    text: ` SELECT s.id, s.email, s.first_name as firstName, s.last_name as lastName, s.city as city,
+    s.phone_number as phone, s.country as country
               FROM users s
               WHERE email = $1 AND password = $2`,
     values: [email, hash],
@@ -22,6 +24,7 @@ const authenticateUser = async (email, password) => {
     const { rows } = await db.query(queryText);
     if (rows[0]) {
       const user = rows[0];
+      console.log(user);
       return user;
     }
     throw (new Error('Bad credentials'));
@@ -30,15 +33,6 @@ const authenticateUser = async (email, password) => {
   }
 };
 
-// id SERIAL PRIMARY KEY,
-//   email TEXT UNIQUE,
-//   password TEXT,
-//   first_name TEXT,
-//   last_name TEXT,
-//   country TEXT,
-//   city TEXT,
-//   phone_number TEXT,
-//   position TEXT,
 const addNewUser = (firstName, lastName, email, country, city, phone, password) => {
   const hash = hashPassword(email, password);
   const DEFAULT_POSITION = 'Ile de France';
@@ -74,9 +68,10 @@ const addNewUser = (firstName, lastName, email, country, city, phone, password) 
 
       if (res.rowCount > 0) {
         console.log('# of records inserted:', res.rowCount);
-      } else {
-        console.log('No records were inserted.');
+        return 'SUCCESS';
       }
+      console.log('No records were inserted.');
+      return 'FAIL';
     }
   });
 };
