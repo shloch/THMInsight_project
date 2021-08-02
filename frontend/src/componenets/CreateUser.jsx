@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import postDataToServer from '../helpers/sendDataToServer';
+import { addNewUser } from '../helpers/sendDataToServer';
 import backendServer from '../helpers/configBackend';
 
 export default function CreateUser() {
@@ -40,7 +40,7 @@ export default function CreateUser() {
       const formValues = JSON.stringify(values, null, 2);
 
       const postURL = `${backendServer}/addUserData`;
-      const afterPostData = postDataToServer(formValues, postURL);
+      const afterPostData = addNewUser(formValues, postURL);
       console.log(afterPostData);
       setNotification('Successfully created User');
     },

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import postDataToServer from '../helpers/sendDataToServer';
+import { authenticate } from '../helpers/sendDataToServer';
 import backendServer from '../helpers/configBackend';
 
 export default function EditUser() {
   const [notification, setNotification] = useState('');
   const params = new URLSearchParams(window.location.search);
-  console.log(params.get('firstname'));
   const formik = useFormik({
     initialValues: {
       firstName: params.has('firstname') ? params.get('firstname') : '',
@@ -41,8 +40,8 @@ export default function EditUser() {
       console.log(JSON.stringify(values, null, 2));
       const formValues = JSON.stringify(values, null, 2);
 
-      const postURL = `${backendServer}/addUserData`;
-      const afterPostData = postDataToServer(formValues, postURL);
+      const postURL = `${backendServer}/editUserData`;
+      const afterPostData = authenticate(formValues, postURL);
       console.log(afterPostData);
       setNotification('Successfully created User');
     },
@@ -153,7 +152,7 @@ export default function EditUser() {
               ) : null}
 
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit">Edit</button>
           </form>
         </div>
       </div>

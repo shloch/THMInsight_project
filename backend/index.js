@@ -32,6 +32,15 @@ app.post('/addUserData', (request, response) => {
   User.addNewUser(firstName, lastName, email, country, city, phone, password);
 });
 
+app.post('/editUserData', (request, response) => {
+  console.log(request.body);
+  console.log('yoo edit');
+  const {
+    firstName, lastName, email, country, city, phone, password,
+  } = request.body;
+  User.editUserData(firstName, lastName, email, country, city, phone, password);
+});
+
 app.post('/authenticate', (request, response) => {
   console.log(request.body);
   const {

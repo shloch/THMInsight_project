@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import backendServer from '../helpers/configBackend';
-import authenticate from '../helpers/authenticateUser';
+import frontendServer from '../helpers/configFrontEnd';
+import { authenticate } from '../helpers/sendDataToServer';
 
 export default function Login() {
   const [notification, setNotification] = useState('');
@@ -24,16 +25,13 @@ export default function Login() {
       const postURL = `${backendServer}/authenticate`;
       const auth = authenticate(formValues, postURL);
       auth.then((data) => {
-        console.log(data.firstname);
         setNotification(`Signed In as ${data.lastname} : {userID: ${data.id}}`);
         setTimeout(() => {
           let params = `email=${data.email}&phone=${data.phone}&city=${data.city}&country=${data.country}&id=${data.id}`;
           params += `&firstname=${data.firstname}&lastname=${data.lastname}`;
-          const server = `http://localhost:3000/editUser?${params}`;
-          window.location.href = server;
+          window.location.href = `${frontendServer}/editUser?${params}`;
         }, 5000);
       });
-      //   console.log(afterPostData);
     },
   });
 

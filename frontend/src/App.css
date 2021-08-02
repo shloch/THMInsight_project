@@ -13,8 +13,8 @@
 
 main #centralBlock #topBar #miniPhoto #profilePic img {
   border-radius: 100px;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
 }
 main #centralBlock #topBar #miniPhoto #profileName {
   padding-top: 1%;
